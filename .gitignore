@@ -2,6 +2,12 @@
 viz_*.html
 momentum_viz_*.html
 *_viz_*.html
+db_viz_*.html
+
+# Database files (can be regenerated)
+*.db
+*.sqlite
+*.sqlite3
 
 # Python
 __pycache__/
