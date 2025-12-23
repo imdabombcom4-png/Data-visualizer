@@ -1,0 +1,28 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+
+# Generate 4D data
+n_points = 50
+data_4d = np.random.randn(n_points, 4)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+def update(frame):
+    ax.clear()
+    # Plot first 3 dimensions in space
+    # Use 4th dimension to determine which "slice" we're viewing
+    slice_width = 0.5
+    mask = np.abs(data_4d[:, 3] - frame) < slice_width
+    
+    ax.scatter(data_4d[mask, 0], 
+               data_4d[mask, 1], 
+               data_4d[mask, 2])
+    ax.set_title(f'4th dimension value: {frame:.2f}')
+
+# Animate through the 4th dimension
+frames = np.linspace(data_4d[:, 3].min(), data_4d[:, 3].max(), 50)
+anim = FuncAnimation(fig, update, frames=frames)
+plt.show()
