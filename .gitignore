@@ -1,5 +1,7 @@
 # Visualization outputs (can be regenerated)
 viz_*.html
+momentum_viz_*.html
+*_viz_*.html
 
 # Python
 __pycache__/
